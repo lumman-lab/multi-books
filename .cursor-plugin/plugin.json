@@ -1,0 +1,14 @@
+{
+  "name": "multi-books",
+  "displayName": "Multi Books",
+  "version": "1.0.0",
+  "description": "FreeAgent, Xero, QuickBooks Online and Zoho Books in AI apps: many companies at once - one answer.",
+  "author": {
+    "name": "Lumman"
+  },
+  "homepage": "https://lumman.co/mcp/multi-books",
+  "repository": "https://github.com/lumman-lab/multi-books",
+  "license": "MIT",
+  "keywords": ["bookkeeping", "accounting", "freeagent", "xero", "quickbooks", "zoho-books", "invoices", "bills", "vat", "multiple-companies"],
+  "logo": ".claude-plugin/icon.png"
+}

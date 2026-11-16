@@ -1,0 +1,17 @@
+{
+  "name": "multi-books",
+  "owner": {
+    "name": "Lumman",
+    "url": "https://lumman.co"
+  },
+  "metadata": {
+    "description": "The Multi Books plugin for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "multi-books",
+      "source": "./",
+      "description": "FreeAgent, Xero, QuickBooks Online and Zoho Books in AI apps: many companies at once - one answer."
+    }
+  ]
+}

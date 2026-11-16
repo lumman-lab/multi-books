@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "multi-books": {
+      "serverUrl": "https://books.lumman.co/mcp"
+    }
+  }
+}
