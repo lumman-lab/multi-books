@@ -1,12 +1,12 @@
 # Multi Books
 
-Xero and FreeAgent MCP for AI apps: one answer across all your companies.
+Xero, Zoho Books and FreeAgent MCP for AI apps: one answer across all your companies.
 
-Multi Books is a remote MCP server run by Lumman Ltd. It connects the books of several companies - your Xero organisations and FreeAgent companies, all at once - behind one connector, so an AI client can answer one question across every company you run, with no switching between them, and do the bookkeeping in each. This repository holds what clients install: the manifests for Claude Code, Cursor, Gemini CLI and Antigravity, and three skills. The server itself is not in it.
+Multi Books is a remote MCP server run by Lumman Ltd. It connects the books of several companies - your Xero organisations, Zoho Books organisations and FreeAgent companies, all at once - behind one connector, so an AI client can answer one question across every company you run, with no switching between them, and do the bookkeeping in each. This repository holds what clients install: the manifests for Claude Code, Cursor, Gemini CLI and Antigravity, and three skills. The server itself is not in it.
 
 ## Before you start
 
-You need a Lumman account with at least one company added - in the window your AI client opens when it first connects, or at https://lumman.co/mcp/account/multi-books. Sign in there with Google, Microsoft, a passkey or an emailed code. Each company is added once, with its program's own sign-in - Xero's, where one sign-in adds every organisation you pick, or FreeAgent's. Any number of companies. Each company's read-only switch is on the same page.
+You need a Lumman account with at least one company added - in the window your AI client opens when it first connects, or at https://lumman.co/mcp/account/multi-books. Sign in there with Google, Microsoft, a passkey or an emailed code. Each company is added once, with its program's own sign-in - Xero's or Zoho's, where one sign-in adds several organisations, or FreeAgent's. Any number of companies. Each company's read-only switch is on the same page.
 
 ## Add it to your client
 
@@ -92,7 +92,7 @@ Examples:
 
 - "Who owes money to each of my companies, and how late is each invoice?"
 - "Compare last month's profit and loss across all my companies."
-- "Explain this week's bank transactions in my FreeAgent company - show me before you change anything."
+- "Explain this week's bank transactions in my FreeAgent or Zoho Books company - show me before you change anything."
 
 ## Ready requests
 
@@ -114,7 +114,9 @@ The connector offers these requests ready-made; a client shows them as prompts o
 | `invoices_list` | List invoices |
 | `invoices_get` | Read an invoice |
 | `estimates_list` | List estimates |
+| `estimates_get` | Read an estimate on Zoho Books |
 | `credit_notes_list` | List credit notes |
+| `credit_notes_get` | Read a credit note on Zoho Books |
 | `bills_list` | List bills |
 | `bills_get` | Read a bill |
 | `attachments_get` | Read an attachment |
@@ -125,20 +127,29 @@ The connector offers these requests ready-made; a client shows them as prompts o
 | `reports_aged_receivables` | Read who owes the company |
 | `reports_aged_payables` | Read whom the company owes |
 | `reports_totals_by_contact` | Read totals by customer or supplier |
+| `reports_cash_flow` | Read the cash flow statement on Zoho Books |
+| `reports_general_ledger` | Read the general ledger on Zoho Books |
+| `reports_sales_by_item` | Read sales by item or product on Zoho Books |
 | `tax_returns_list` | List tax returns |
 | `projects_list` | List projects |
 | `time_entries_list` | List time entries |
 | `expenses_list` | List expenses |
 | `journals_list` | List journals |
+| `journals_get` | Read a journal on Zoho Books |
 | `recurring_invoices_list` | List recurring invoices |
 | `recurring_bills_list` | List recurring bills |
 | `purchase_orders_list` | List purchase orders |
+| `purchase_orders_get` | Read a purchase order on Zoho Books |
+| `sales_orders_list` | List sales orders on Zoho Books |
+| `sales_orders_get` | Read a sales order on Zoho Books |
 | `payments_list` | List payments |
 | `tracking_categories_list` | List tracking categories |
 | `items_list` | List items |
 | `tax_rates_list` | List tax rates |
+| `users_list` | List users on Zoho Books |
 | `contacts_create` | Create a contact |
 | `contacts_update` | Change a contact |
+| `contacts_delete` | Delete a contact on Zoho Books |
 | `invoices_create` | Create an invoice |
 | `invoices_update` | Change an invoice |
 | `invoices_send` | Send an invoice |
@@ -147,8 +158,12 @@ The connector offers these requests ready-made; a client shows them as prompts o
 | `estimates_create` | Create an estimate |
 | `estimates_update` | Change an estimate |
 | `estimates_send` | Send an estimate |
+| `estimates_delete` | Delete an estimate on Zoho Books |
 | `credit_notes_create` | Create a credit note |
 | `credit_notes_update` | Change a credit note |
+| `sales_orders_create` | Create a sales order on Zoho Books |
+| `sales_orders_update` | Change a sales order on Zoho Books |
+| `sales_orders_delete` | Delete a sales order on Zoho Books |
 | `projects_create` | Create a project |
 | `projects_update` | Change a project |
 | `time_entries_create` | Record time |
@@ -157,27 +172,43 @@ The connector offers these requests ready-made; a client shows them as prompts o
 | `bills_create` | Create a bill |
 | `bills_update` | Change a bill |
 | `bills_delete` | Delete a bill |
+| `purchase_orders_create` | Create a purchase order on Zoho Books |
+| `purchase_orders_update` | Change a purchase order on Zoho Books |
+| `purchase_orders_delete` | Delete a purchase order on Zoho Books |
+| `attachments_create` | Attach a file on Zoho Books |
 | `expenses_create` | Record an expense |
 | `expenses_update` | Change an expense |
 | `expenses_delete` | Delete an expense |
 | `bank_transactions_code` | Explain a bank transaction |
 | `bank_transactions_uncode` | Undo an explanation |
+| `bank_statements_import` | Import a bank statement on Zoho Books |
+| `bank_statements_delete` | Undo a statement import on Zoho Books |
+| `bank_reconciliations_create` | Reconcile a bank account on Zoho Books |
+| `bank_reconciliations_delete` | Undo a reconciliation on Zoho Books |
 | `payments_record` | Record a payment |
+| `payments_update` | Change a customer payment on Zoho Books |
+| `payments_delete` | Delete a customer payment on Zoho Books |
 | `journals_create` | Create a journal |
 | `journals_update` | Change a journal |
 | `items_create` | Create an item |
 | `items_update` | Change an item |
+| `items_delete` | Delete an item on Zoho Books |
+| `tax_rates_create` | Create a tax rate on Zoho Books |
+| `tax_rates_update` | Change a tax rate on Zoho Books |
+| `tax_rates_delete` | Delete a tax rate on Zoho Books |
+| `accounts_create` | Create an account on Zoho Books |
+| `accounts_update` | Change an account on Zoho Books |
 
 ## Where your books go
 
-Every client sends its calls to https://books.lumman.co/mcp, run by Lumman. Signing in runs through the authorisation server that address names. Lumman keeps no copy of your books: they are read from Xero or FreeAgent each time a client asks. The words of every invoice, bill, bank line and other record are screened for prompt attacks before they reach your AI client, as are the words of everything a client writes before they reach your program, and the books are passed on only to the client you approved. What the connector passes on, and to whom - the screening service among them - is in the privacy policy: https://lumman.co/privacy.
+Every client sends its calls to https://books.lumman.co/mcp, run by Lumman. Signing in runs through the authorisation server that address names. Lumman keeps no copy of your books: they are read from Xero, Zoho Books or FreeAgent each time a client asks. The words of every invoice, bill, bank line and other record are screened for prompt attacks before they reach your AI client, as are the words of everything a client writes before they reach your program, and the books are passed on only to the client you approved. What the connector passes on, and to whom - the screening service among them - is in the privacy policy: https://lumman.co/privacy.
 
 Switch any one company to read only at https://lumman.co/mcp/account/multi-books and every change there is refused before its program is asked. Multi Books makes no payment, charges no card and files no tax return: it records payments in the books.
 
 ## Limits
 
 - One call reads at most four companies; a question across more takes several calls.
-- In Xero, bank entries are recorded but cannot be reconciled, as Xero's API does not allow it; in FreeAgent, the bank feed's lines are explained. Tax returns are read in FreeAgent, for their deadlines and amounts due, and in Xero for organisations in Australia and New Zealand, with the 1099 figures in the US.
+- In Xero, bank entries are recorded but cannot be reconciled, as Xero's API does not allow it; in FreeAgent and Zoho Books, the bank feed's lines are categorised. Tax returns are read in FreeAgent, for their deadlines and amounts due, and in Xero for organisations in Australia and New Zealand, with the 1099 figures in the US; Zoho Books gives its VAT summary.
 - A write whose answer was lost is settled by reading the books back, never by sending it again.
 - A record whose words screen as a prompt attack is withheld rather than passed on, and a call whose screening cannot finish is closed. A file's own bytes - an attachment or a receipt - are not screened.
 
@@ -193,4 +224,4 @@ Write to the address under Contact Us in Lumman's privacy policy: https://lumman
 
 The files in this repository are under the MIT licence in [LICENSE](LICENSE). The Multi Books service they connect to is provided under Lumman's terms: https://lumman.co/terms.
 
-Program names are trade marks of their owners.
+Zoho and Zoho Books are trademarks of Zoho Corporation Private Limited and/or its affiliates. Other program names are trade marks of their owners.

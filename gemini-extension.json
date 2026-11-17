@@ -1,7 +1,7 @@
 {
   "name": "multi-books",
-  "version": "1.0.1",
-  "description": "Xero and FreeAgent MCP for AI apps: one answer across all your companies.",
+  "version": "1.0.2",
+  "description": "Xero, Zoho Books and FreeAgent MCP for AI apps: one answer across all your companies.",
   "mcpServers": {
     "multi-books": {
       "type": "http",

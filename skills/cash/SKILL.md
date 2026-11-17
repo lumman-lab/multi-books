@@ -1,6 +1,6 @@
 ---
 name: cash
-description: The cash across every connected Xero and FreeAgent company - each bank balance today, totalled in each currency - and, when asked, a forecast 30, 60 and 90 days ahead from what is owed each way and what recurs, with its risks. Use when asked about cash, bank balances or a cash forecast. Changes nothing.
+description: The cash across every connected Xero, Zoho Books and FreeAgent company - each bank balance today, totalled in each currency - and, when asked, a forecast 30, 60 and 90 days ahead from what is owed each way and what recurs, with its risks. Use when asked about cash, bank balances or a cash forecast. Changes nothing.
 ---
 
 # Cash across every company
