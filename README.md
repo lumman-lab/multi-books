@@ -1,12 +1,12 @@
 # Multi Books
 
-FreeAgent, Xero, QuickBooks Online and Zoho Books in AI apps: many companies at once - one answer.
+Xero and FreeAgent MCP for AI apps: one answer across all your companies.
 
-Multi Books is a remote MCP server run by Lumman Ltd. It connects the books of several companies - your FreeAgent companies, Xero organisations, QuickBooks Online companies and Zoho Books organisations, all at once - behind one connector, so an AI client can answer one question across every company you run, whichever program keeps it, and do the bookkeeping in each. This repository holds what clients install: the manifests for Claude Code, Cursor, Gemini CLI and Antigravity, and three skills. The server itself is not in it.
+Multi Books is a remote MCP server run by Lumman Ltd. It connects the books of several companies - your Xero organisations and FreeAgent companies, all at once - behind one connector, so an AI client can answer one question across every company you run, with no switching between them, and do the bookkeeping in each. This repository holds what clients install: the manifests for Claude Code, Cursor, Gemini CLI and Antigravity, and three skills. The server itself is not in it.
 
 ## Before you start
 
-You need a Lumman account with at least one company added - in the window your AI client opens when it first connects, or at https://lumman.co/mcp/account/multi-books. Sign in there with Google, Microsoft, a passkey or an emailed code. Each company is added once, with its program's own sign-in - FreeAgent, Xero, Intuit for QuickBooks Online or Zoho for Zoho Books - and stays connected: any number of companies, no switching or reconnecting. Each company's read-only switch is on the same page.
+You need a Lumman account with at least one company added - in the window your AI client opens when it first connects, or at https://lumman.co/mcp/account/multi-books. Sign in there with Google, Microsoft, a passkey or an emailed code. Each company is added once, with its program's own sign-in - Xero's, where one sign-in adds every organisation you pick, or FreeAgent's. Any number of companies. Each company's read-only switch is on the same page.
 
 ## Add it to your client
 
@@ -92,7 +92,7 @@ Examples:
 
 - "Who owes money to each of my companies, and how late is each invoice?"
 - "Compare last month's profit and loss across all my companies."
-- "Explain this week's bank transactions in my consulting company - show me before you change anything."
+- "Explain this week's bank transactions in my FreeAgent company - show me before you change anything."
 
 ## Ready requests
 
@@ -125,9 +125,6 @@ The connector offers these requests ready-made; a client shows them as prompts o
 | `reports_aged_receivables` | Read who owes the company |
 | `reports_aged_payables` | Read whom the company owes |
 | `reports_totals_by_contact` | Read totals by customer or supplier |
-| `reports_cash_flow` | Read the cash flow statement on Zoho Books |
-| `reports_general_ledger` | Read the general ledger on Zoho Books |
-| `reports_sales_by_item` | Read sales by item on Zoho Books |
 | `tax_returns_list` | List tax returns |
 | `projects_list` | List projects |
 | `time_entries_list` | List time entries |
@@ -173,14 +170,14 @@ The connector offers these requests ready-made; a client shows them as prompts o
 
 ## Where your books go
 
-Every client sends its calls to https://books.lumman.co/mcp, run by Lumman. Signing in runs through the authorisation server that address names. Lumman keeps no copy of your books: they are read from FreeAgent, Xero, QuickBooks Online or Zoho Books each time a client asks. The words of every record are screened for prompt attacks before they reach your AI client, as are the words of everything a client writes before they reach your program, and the books are passed on only to the client you approved. What the connector passes on, and to whom - the screening service among them - is in the privacy policy: https://lumman.co/privacy.
+Every client sends its calls to https://books.lumman.co/mcp, run by Lumman. Signing in runs through the authorisation server that address names. Lumman keeps no copy of your books: they are read from Xero or FreeAgent each time a client asks. The words of every invoice, bill, bank line and other record are screened for prompt attacks before they reach your AI client, as are the words of everything a client writes before they reach your program, and the books are passed on only to the client you approved. What the connector passes on, and to whom - the screening service among them - is in the privacy policy: https://lumman.co/privacy.
 
-Switch any one company to read only at https://lumman.co/mcp/account/multi-books and every change there is refused before its program is asked. Multi Books never moves money: it records payments but makes none, charges no card and files no tax return.
+Switch any one company to read only at https://lumman.co/mcp/account/multi-books and every change there is refused before its program is asked. Multi Books makes no payment, charges no card and files no tax return: it records payments in the books.
 
 ## Limits
 
 - One call reads at most four companies; a question across more takes several calls.
-- Bank transactions are explained and recorded in FreeAgent, Xero and Zoho Books; VAT return figures are read in FreeAgent, QuickBooks and Zoho Books.
+- In Xero, bank entries are recorded but cannot be reconciled, as Xero's API does not allow it; in FreeAgent, the bank feed's lines are explained. Tax returns are read in FreeAgent, for their deadlines and amounts due, and in Xero for organisations in Australia and New Zealand, with the 1099 figures in the US.
 - A write whose answer was lost is settled by reading the books back, never by sending it again.
 - A record whose words screen as a prompt attack is withheld rather than passed on, and a call whose screening cannot finish is closed. A file's own bytes - an attachment or a receipt - are not screened.
 
@@ -196,4 +193,4 @@ Write to the address under Contact Us in Lumman's privacy policy: https://lumman
 
 The files in this repository are under the MIT licence in [LICENSE](LICENSE). The Multi Books service they connect to is provided under Lumman's terms: https://lumman.co/terms.
 
-Intuit and QuickBooks are registered trademarks of Intuit Inc. Used with permission. Zoho and Zoho Books are trademarks of Zoho Corporation Private Limited and/or its affiliates.
+Program names are trade marks of their owners.
