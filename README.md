@@ -12,7 +12,7 @@ You need a Lumman account with at least one company added - in the window your A
 
 ### Claude
 
-In Claude, open Settings, Connectors and press Add custom connector. Name it Multi Books, paste `https://books.lumman.co/mcp`, then approve on the Lumman page that opens.
+In Claude: Plugins, Add, Add custom connector. Name it Multi Books, paste `https://books.lumman.co/mcp`, then approve on the Lumman page that opens. On Team or Enterprise, send this address to an Owner, who adds it as a custom connector in Organization settings, Connectors; then press Connect on it in Claude.
 
 ### Claude Code
 
